@@ -1,80 +1,152 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<style>
-	* {
-		margin: 0; padding: 0;
-	}
-	html, body {
-		height: 100%;
-		width: 100%;
-	}
-	canvas {
-		display: block;
-	}
-</style>
+    <title>Marcel O'Neil</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="description" content="Marcel O'Neil" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <noscript>
+            <style>
+                body {
+                    overflow: auto !important;
+                }
+
+                body:before {
+                    display: none !important;
+                }
+
+                #main {
+                    opacity: 1.0 !important;
+                    -moz-transform: none !important;
+                    -webkit-transform: none !important;
+                    -ms-transform: none !important;
+                    transform: none !important;
+                    -moz-transition: none !important;
+                    -webkit-transition: none !important;
+                    -ms-transition: none !important;
+                    transition: none !important;
+                    -moz-filter: none !important;
+                    -webkit-filter: none !important;
+                    -ms-filter: none !important;
+                    filter: none !important;
+                }
+
+                #main > .inner > * {
+                    opacity: 1.0 !important;
+                    -moz-transform: none !important;
+                    -webkit-transform: none !important;
+                    -ms-transform: none !important;
+                    transform: none !important;
+                    -moz-transition: none !important;
+                    -webkit-transition: none !important;
+                    -ms-transition: none !important;
+                    transition: none !important;
+                    -moz-filter: none !important;
+                    -webkit-filter: none !important;
+                    -ms-filter: none !important;
+                    filter: none !important;
+                }
+            </style>
+        </noscript>
 </head>
 
-<body>
-	
-	<canvas id="myCanvas" width="400" height="400"></canvas>
-	<script type="text/javascript">
-	
-		var canvas = $("#myCanvas");
-		var ctx = canvas.get(0).getContext("2d");
-        
-        $(window).resize(resizeCanvas);
-        function resizeCanvas() {
-	        canvas.attr("width", $(window).get(0).innerWidth);
-	        canvas.attr("height", $(window).get(0).innerHeight);
+<body class="is-loading">
+    <div class="wrapper">
+        <div class="main">
+            <div class="inner">
+                <h1 class="text01">Marcel O'Neil</h1>
+                <hr class="divider02" />
+                <p class="text02">Programmer and Entrepreneur</p>
+                <ul class="icons" class="icons02">
+                    <li>
+                        <a class="icon n01" target="_" href="https://github.com/marceloneil">
+                            <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            <span class="label">GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="icon n02" target="_" href="https://ca.linkedin.com/in/marceloneil">
+                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            <span class="label">LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="icon n03" target="_" href="https://devpost.com/marceloneil">
+                            <i class="fa fa-code" aria-hidden="true"></i>
+                            <span class="label">DevPost</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="icon n04" target="_" href="mailto:marcel@marceloneil.com">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            <span class="label">Email</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://use.fontawesome.com/d48c98f5f6.js"></script>
+    <script>
+        var on = addEventListener,
+            $ = function(q) {
+                return document.querySelector(q)
+            },
+            $$ = function(q) {
+                return document.querySelectorAll(q)
+            },
+            $body = document.body,
+            $inner = $('.inner');
+        on('load', function() {
+            setTimeout(function() {
+                $body.className = $body.className.replace(/\bis-loading\b/, 'is-playing');
+                setTimeout(function() {
+                    $body.className = $body.className.replace(/\bis-playing\b/, 'is-ready');
+                }, 2375);
+            }, 100);
+        });
+        var style, sheet, rule;
+        style = document.createElement('style');
+        style.appendChild(document.createTextNode(''));
+        document.head.appendChild(style);
+        sheet = style.sheet;
+        if (navigator.userAgent.match(/Android ([0-9\.]+)/)) {
+            (function() {
+                sheet.insertRule('body::after { }', 0);
+                rule = sheet.cssRules[0];
+                var f = function() {
+                    rule.style.cssText = 'height: ' + (Math.max(screen.width, screen.height)) + 'px';
+                };
+                on('load', f);
+                on('orientationchange', f);
+                on('touchmove', f);
+            })();
+        } else if (navigator.userAgent.match(/([0-9_]+) like Mac OS X/) || navigator.userAgent.match(/CPU like Mac OS X/)) {
+            (function() {
+                sheet.insertRule('body::after { }', 0);
+                rule = sheet.cssRules[0];
+                rule.style.cssText = '-webkit-transform: scale(1.0)';
+            })();
+        } else if (navigator.userAgent.match(/(MSIE|rv:11\.0)/)) {
+            (function() {
+                var t, f;
+                f = function() {
+                    var x = $('#wrapper');
+                    if (x.scrollHeight > innerHeight)
+                        x.style.height = 'auto';
+                    else
+                        x.style.height = '100vh';
+                };
+                (f)();
+                on('resize', function() {
+                    clearTimeout(t);
+                    t = setTimeout(f, 250);
+                });
+            })();
         }
-        resizeCanvas();
-        
-      	var mouseX = 0;
-		var mouseY = 0;
-		
-    	$(document).mousemove(function(event){ 
-         	$("span").text("X: " + event.pageX + ", Y: " + event.pageY); 
-        	mouseX = event.pageX;
-	        mouseY = event.pageY;
-    	});
-    	
-    	var dx = 32;
-    	var dy = 28;
-    	var r = Math.floor(Math.random()*256);
-	    var g = Math.floor(Math.random()*256);
-	    var b = Math.floor(Math.random()*256);
-
-    	
-    	function drawSite(x,y) {
-	    	var weight = dx*128/(32 + Math.sqrt((x - mouseX)*(x - mouseX) + (y - mouseY)*(y - mouseY)));
-	    	if(weight > 1) {
-		    	var radius = weight;
-		    	ctx.beginPath();
-		    	ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
-		    	var rgb = "rgba("+129+","+37+","+36+","+0.2+")";
-                ctx.fillStyle = rgb;
-                ctx.fill();
-	    	}
-    	}
-    	function draw() {
-	    	ctx.clearRect(0,0,canvas.width(), canvas.height());
-	    	for(var y = 0; y < canvas.height(); y+= dy) {
-		    	for(var x = 0; x < canvas.width(); x+=dx) {
-			    	drawSite(x,y);
-		    	}
-	    	}
-	    	y+=dy;
-	    	for(var x = 0.5*dx; x < canvas.width() + dx; x+=dx) {
-		    	drawSite(x,y);
-	    	}
-    	}
-    	setInterval(draw, 30);
-    	console.log(mouseX);
-	console.log(mouseY);
-	    
-</script>
-
+    </script>
 </body>
+
 </html>
