@@ -10,7 +10,7 @@ void drawSite(float x, float y) {
 }
 
 void setup() {
-  size(1024, 1024);
+  size(1600, 800);
 }
 
 void draw() {
