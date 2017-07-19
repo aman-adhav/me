@@ -10,7 +10,7 @@ void drawSite(float x, float y) {
 }
 
 void setup() {
-  size(1800,1800);
+  size(screen.width, screen.height);
 }
 
 void draw() {
