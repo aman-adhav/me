@@ -10,7 +10,7 @@ void drawSite(float x, float y) {
 }
 
 void setup() {
-  fullscreen();
+  size(1800,1800);
 }
 
 void draw() {
