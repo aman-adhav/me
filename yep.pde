@@ -10,8 +10,7 @@ void drawSite(float x, float y) {
 }
 
 void setup() {
-  size( $(window).width(),
-    $(window).height() );
+  fullScreen();
 }
 
 void draw() {
